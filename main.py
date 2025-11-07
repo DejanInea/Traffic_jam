@@ -49,7 +49,7 @@ class SimulationWidget(QWidget):
         self._timer = QTimer(self)
         self._timer.timeout.connect(self.advance)
         self._timer.start(int(self._dt * 1000))
-        self._paused = False
+        self._paused = True  # begin paused so user-driven start mirrors UI
         self._cars: List[Car] = []
         self._generate_cars(car_count)
 
@@ -66,6 +66,11 @@ class SimulationWidget(QWidget):
 
     def toggle_pause(self) -> None:
         self._paused = not self._paused
+
+    def start(self) -> None:
+        if not self._paused:
+            return
+        self._paused = False
 
     def reset(self) -> None:
         self._generate_cars(len(self._cars))
@@ -234,7 +239,12 @@ class TrafficWindow(QMainWindow):
         controls = QHBoxLayout()
         controls.setSpacing(12)
 
+        self._start_button = QPushButton("Začni")
+        self._start_button.clicked.connect(self._handle_start)
+        controls.addWidget(self._start_button)
+
         self._pause_button = QPushButton("Pavza")
+        self._pause_button.setEnabled(False)
         self._pause_button.clicked.connect(self._handle_pause)
         controls.addWidget(self._pause_button)
 
@@ -250,6 +260,13 @@ class TrafficWindow(QMainWindow):
 
         layout.addLayout(controls)
         self.setCentralWidget(container)
+
+    def _handle_start(self) -> None:
+        self._simulation.start()
+        self._start_button.setEnabled(False)
+        self._pause_button.setEnabled(True)
+        self._pause_button.setText("Pavza")
+        self._refresh_status()
 
     def _handle_pause(self) -> None:
         self._simulation.toggle_pause()

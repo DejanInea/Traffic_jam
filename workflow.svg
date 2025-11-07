@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="900" height="420" viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .node { fill: #1f2933; stroke: #94a3b8; stroke-width: 2; rx: 14; }
+      .text { font-family: "Segoe UI", Arial, sans-serif; font-size: 16px; fill: #f9fafb; }
+      .title { font-weight: bold; font-size: 18px; }
+      .arrow { stroke: #f97316; stroke-width: 3; marker-end: url(#arrowhead); fill: none; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#f97316"/>
+    </marker>
+  </defs>
+
+  <rect x="20" y="20" width="860" height="380" fill="#111827" rx="18"/>
+  <text x="50" y="60" class="text title">Traffic Jam – Workflow</text>
+
+  <rect class="node" x="80" y="110" width="190" height="90"/>
+  <text class="text" x="100" y="150">Uporabnik zažene</text>
+  <text class="text" x="100" y="172">`python main.py`</text>
+
+  <rect class="node" x="340" y="110" width="220" height="110"/>
+  <text class="text" x="360" y="150">Glavno okno (`TrafficWindow`)</text>
+  <text class="text" x="360" y="172">naloži `SimulationWidget`,</text>
+  <text class="text" x="360" y="194">pripravi gumbe Start/Pavza/Reset</text>
+
+  <rect class="node" x="650" y="110" width="190" height="110"/>
+  <text class="text" x="670" y="150">Dogodki gumbov:</text>
+  <text class="text" x="670" y="172">Start → zažene simulacijo</text>
+  <text class="text" x="670" y="194">Pavza/Reset → upravlja stanje</text>
+
+  <rect class="node" x="120" y="270" width="240" height="110"/>
+  <text class="text" x="140" y="310">Simulacijska zanka (`advance`)</text>
+  <text class="text" x="140" y="332">računa razdalje, ciljne hitrosti,</text>
+  <text class="text" x="140" y="354">posodobi položaje vozil</text>
+
+  <rect class="node" x="420" y="270" width="210" height="110"/>
+  <text class="text" x="440" y="310">Fizikalna pravila:</text>
+  <text class="text" x="440" y="332">varnostni razmik,</text>
+  <text class="text" x="440" y="354">pospešek/zaviranje</text>
+
+  <rect class="node" x="680" y="270" width="170" height="110"/>
+  <text class="text" x="700" y="310">Render + metrika</text>
+  <text class="text" x="700" y="332">QPainter nariše cesto,</text>
+  <text class="text" x="700" y="354">status pokaže povp. hitrost</text>
+
+  <line class="arrow" x1="270" y1="155" x2="340" y2="155"/>
+  <line class="arrow" x1="560" y1="165" x2="650" y2="165"/>
+  <line class="arrow" x1="740" y1="220" x2="740" y2="270"/>
+  <line class="arrow" x1="200" y1="200" x2="200" y2="270"/>
+  <line class="arrow" x1="360" y1="220" x2="240" y2="270"/>
+  <line class="arrow" x1="360" y1="220" x2="520" y2="270"/>
+  <line class="arrow" x1="330" y1="325" x2="420" y2="325"/>
+  <line class="arrow" x1="630" y1="325" x2="680" y2="325"/>
+  <line class="arrow" x1="850" y1="325" x2="850" y2="165"/>
+  <line class="arrow" x1="850" y1="165" x2="840" y2="165"/>
+</svg>
